@@ -3,11 +3,6 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UIManager {
-    private final ErrorMsgMaker errorMsgMaker;
-
-    public UIManager() {
-        errorMsgMaker = new ErrorMsgMaker();
-    }
 
     public void printGameStartMsg() {
         System.out.println("##### GAME START #####");
