@@ -4,7 +4,9 @@ public class RacingCar {
     private CarName carName;
     private int stepCount;
 
-    public RacingCar() {
+    public RacingCar(String name) {
+        this.carName = new CarName(name);
+        stepCount = 0;
     }
 
     public void tryStep() {

@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.domain.RacingCars;
 import racingcar.view.UIManager;
 
 public class Application {
@@ -7,7 +8,7 @@ public class Application {
         UIManager uiManager = new UIManager();
 
         uiManager.printGameStartMsg();
-        String carNames = uiManager.inputCarNames();
+        RacingCars racingCars = new RacingCars(uiManager.inputCarNames());
 
 
     }
