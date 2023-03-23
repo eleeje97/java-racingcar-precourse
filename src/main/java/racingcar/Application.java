@@ -7,5 +7,8 @@ public class Application {
         UIManager uiManager = new UIManager();
 
         uiManager.printGameStartMsg();
+        String carNames = uiManager.inputCarNames();
+
+
     }
 }
