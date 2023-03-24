@@ -3,7 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.view.ErrorMsg;
+import racingcar.constants.ErrorMsg;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,7 +15,7 @@ public class RacingCarsTest {
         /**
          * Given: userInput과 같은 사용자 입력이 주어졌을 때
          * When: RacingCars를 생성하면
-         * Then: IllegalArgumentException이 발생한다.
+         * Then: IllegalArgumentException(BLANK_IN_NAME_ERROR)이 발생한다.
          */
 
         assertThatThrownBy(() -> new RacingCars(userInput))
@@ -23,15 +23,32 @@ public class RacingCarsTest {
                 .hasMessage(ErrorMsg.BLANK_IN_NAME_ERROR.getMsg());
     }
 
-    @Disabled
     @ParameterizedTest
-    @ValueSource(strings = {"", "ferrari", "bmw,ferrari", ",", "audi,"})
-    void 자동차이름_길이범위_벗어났을_때(String userInput) {
-        // Given
+    @ValueSource(strings = {"", ",", "audi,", ",,", "bmw,,audi"})
+    void 자동차이름_길이범위최소_벗어났을_때(String userInput) {
+        /**
+         * Given: userInput과 같은 사용자 입력이 주어졌을 때
+         * When: RacingCars를 생성하면
+         * Then: IllegalArgumentException(CAR_NAME_LENGTH_MIN_ERROR)이 발생한다.
+         */
 
-        // When
+        assertThatThrownBy(() -> new RacingCars(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.CAR_NAME_LENGTH_MIN_ERROR.getMsg());
+    }
 
-        // Then
+    @ParameterizedTest
+    @ValueSource(strings = {"ferrari", "bmw,ferrari", "ferrari,,"})
+    void 자동차이름_길이범위최대_벗어났을_때(String userInput) {
+        /**
+         * Given: userInput과 같은 사용자 입력이 주어졌을 때
+         * When: RacingCars를 생성하면
+         * Then: IllegalArgumentException(CAR_NAME_LENGTH_MAX_ERROR)이 발생한다.
+         */
+
+        assertThatThrownBy(() -> new RacingCars(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.CAR_NAME_LENGTH_MAX_ERROR.getMsg());
     }
 
     @Disabled

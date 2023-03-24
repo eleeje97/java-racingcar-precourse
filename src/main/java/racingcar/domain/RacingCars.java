@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.view.ErrorMsg;
+import racingcar.constants.ErrorMsg;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class RacingCars {
     }
 
     private void addRacingCars(String userInput) {
-        for (String carName : userInput.split(",")) {
+        for (String carName : userInput.split(",", -1)) {
             racingCars.add(new RacingCar(carName));
         }
     }
