@@ -1,5 +1,6 @@
 package racingcar;
 
+import racingcar.constants.GameConstants;
 import racingcar.domain.RacingCars;
 import racingcar.domain.TrialCount;
 import racingcar.view.UIManager;
@@ -27,8 +28,9 @@ public class Application {
             }
         }
 
-
-        // TODO: 레이스 진행
+        for (int i = 0; i < GameConstants.getTrialCount(); i++) {
+            racingCars.moveCars();
+        }
 
         // TODO: 우승자 출력
     }

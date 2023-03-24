@@ -27,8 +27,14 @@ public class RacingCars {
         }
     }
 
-    public boolean validateBlank(String userInput) {
+    private boolean validateBlank(String userInput) {
         return userInput.contains(" ");
+    }
+
+    public void moveCars() {
+        for (RacingCar car : racingCars) {
+            car.attemptToMove();
+        }
     }
 
     public void pickWinners() {

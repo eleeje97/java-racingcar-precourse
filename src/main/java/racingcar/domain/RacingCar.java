@@ -9,10 +9,10 @@ public class RacingCar {
         stepCount = 0;
     }
 
-    public void tryStep() {
+    public void attemptToMove() {
     }
 
-    public void step() {
+    private void move() {
     }
 
 }
