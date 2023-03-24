@@ -33,7 +33,8 @@ public class RacingCars {
 
     public void moveCars() {
         for (RacingCar car : racingCars) {
-            car.attemptToMove();
+            RandomNumber randomNumber = new GameRandomNumber();
+            car.attemptToMove(randomNumber);
         }
     }
 
