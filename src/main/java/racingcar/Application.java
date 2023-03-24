@@ -28,8 +28,10 @@ public class Application {
             }
         }
 
+        uiManager.printGameResultMsg();
         for (int i = 0; i < GameConstants.getTrialCount(); i++) {
             racingCars.moveCars();
+            uiManager.printCarPositions(racingCars.getCarPositions());
         }
 
         // TODO: 우승자 출력

@@ -2,8 +2,7 @@ package racingcar.domain;
 
 import racingcar.constants.ErrorMsg;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;
@@ -36,6 +35,14 @@ public class RacingCars {
             RandomNumber randomNumber = new GameRandomNumber();
             car.attemptToMove(randomNumber);
         }
+    }
+
+    public Map<String, Integer> getCarPositions() {
+        Map<String, Integer> carPosition = new LinkedHashMap<>();
+        for (RacingCar car : racingCars) {
+            carPosition.put(car.getCarName(), car.getMoveCount());
+        }
+        return carPosition;
     }
 
     public void pickWinners() {

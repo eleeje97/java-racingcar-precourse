@@ -3,7 +3,7 @@ package racingcar.domain;
 import racingcar.constants.GameConstants;
 
 public class RacingCar {
-    private CarName carName;
+    private final CarName carName;
     private int moveCount;
 
     public RacingCar(String name) {
@@ -13,6 +13,10 @@ public class RacingCar {
 
     public int getMoveCount() {
         return moveCount;
+    }
+
+    public String getCarName() {
+        return carName.getName();
     }
 
     public void attemptToMove(RandomNumber randomNumber) {

@@ -2,6 +2,8 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Map;
+
 public class UIManager {
 
     public void printGameStartMsg() {
@@ -18,7 +20,24 @@ public class UIManager {
         return Console.readLine();
     }
 
-    public void printCarSteps() {
+    public void printGameResultMsg() {
+        System.out.println("실행 결과");
+    }
+
+    public void printCarPositions(Map<String, Integer> carPositions) {
+        for (String carName : carPositions.keySet()) {
+            System.out.println(carName + " : " + getDashExpressionOfCarPosition(carPositions.get(carName)));
+        }
+        System.out.println();
+    }
+
+    private String getDashExpressionOfCarPosition(int position) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < position; i++) {
+            sb.append("-");
+        }
+
+        return sb.toString();
     }
 
     public void printWinners() {

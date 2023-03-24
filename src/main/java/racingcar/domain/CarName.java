@@ -4,11 +4,15 @@ import racingcar.constants.GameConstants;
 import racingcar.constants.ErrorMsg;
 
 public class CarName {
-    private String name;
+    private final String name;
 
     public CarName(String name) {
         validateLength(name);
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     private void validateLength(String name) {
