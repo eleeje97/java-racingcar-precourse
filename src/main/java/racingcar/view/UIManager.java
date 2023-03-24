@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
 import java.util.Map;
 
 public class UIManager {
@@ -40,6 +41,11 @@ public class UIManager {
         return sb.toString();
     }
 
-    public void printWinners() {
+    public void printWinners(List<String> winners) {
+        StringBuilder sb = new StringBuilder("최종 우승자 : " + winners.get(0));
+        for (int i = 1; i < winners.size(); i++) {
+            sb.append(", ").append(winners.get(i));
+        }
+        System.out.println(sb);
     }
 }

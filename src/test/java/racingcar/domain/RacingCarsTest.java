@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.constants.ErrorMsg;
@@ -61,5 +62,10 @@ public class RacingCarsTest {
 
         assertThatCode(() -> new RacingCars(userInput))
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 우승자_선정_테스트() {
+
     }
 }

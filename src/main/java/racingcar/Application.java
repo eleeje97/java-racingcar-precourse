@@ -34,6 +34,6 @@ public class Application {
             uiManager.printCarPositions(racingCars.getCarPositions());
         }
 
-        // TODO: 우승자 출력
+        uiManager.printWinners(racingCars.pickWinners());
     }
 }

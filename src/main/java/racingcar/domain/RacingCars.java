@@ -45,7 +45,30 @@ public class RacingCars {
         return carPosition;
     }
 
-    public void pickWinners() {
+    public List<String> pickWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxStep = getMaxStep();
+
+        for (RacingCar car : racingCars) {
+            addWinner(winners, car, maxStep);
+        }
+
+        return winners;
+    }
+
+    private void addWinner(List<String> winners, RacingCar car, int maxStep) {
+        if (car.getMoveCount() == maxStep) {
+            winners.add(car.getCarName());
+        }
+    }
+
+    private int getMaxStep() {
+        int maxStep = 0;
+        for (RacingCar car : racingCars) {
+            maxStep = Integer.max(maxStep, car.getMoveCount());
+        }
+
+        return maxStep;
     }
 
 }

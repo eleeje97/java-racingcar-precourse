@@ -8,7 +8,7 @@ public enum ErrorMsg {
     TRIAL_COUNT_EMPTY_INPUT_ERROR("시도 횟수를 입력하지 않았습니다."),
     TRIAL_COUNT_ZERO_ERROR("시도 횟수는 1 이상이어야 합니다.");
 
-    private static final String ERROR_MSG_TAG = "[Error]";
+    private static final String ERROR_MSG_TAG = "[ERROR]";
     private final String msg;
 
     ErrorMsg(String msg) {
