@@ -21,7 +21,7 @@ public class Application {
 
         while (trialCount == null) {
             try {
-                trialCount = new TrialCount(uiManager.inputTryCount());
+                trialCount = new TrialCount(uiManager.inputTrialCount());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
