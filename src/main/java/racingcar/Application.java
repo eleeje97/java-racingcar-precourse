@@ -1,12 +1,14 @@
 package racingcar;
 
 import racingcar.domain.RacingCars;
+import racingcar.domain.TrialCount;
 import racingcar.view.UIManager;
 
 public class Application {
     public static void main(String[] args) {
         UIManager uiManager = new UIManager();
         RacingCars racingCars = null;
+        TrialCount trialCount = null;
 
         uiManager.printGameStartMsg();
         while (racingCars == null) {
@@ -17,7 +19,14 @@ public class Application {
             }
         }
 
-        // TODO: 시도할 횟수 입력받기
+        while (trialCount == null) {
+            try {
+                trialCount = new TrialCount(uiManager.inputTryCount());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
 
         // TODO: 레이스 진행
 

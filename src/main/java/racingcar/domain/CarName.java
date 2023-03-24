@@ -11,7 +11,7 @@ public class CarName {
         this.name = name;
     }
 
-    public void validateLength(String name) {
+    private void validateLength(String name) {
         if (name.length() < GameConstants.CAR_NAME_LENGTH_MIN.getNumber()) {
             throw new IllegalArgumentException(ErrorMsg.CAR_NAME_LENGTH_MIN_ERROR.getMsg());
         }
