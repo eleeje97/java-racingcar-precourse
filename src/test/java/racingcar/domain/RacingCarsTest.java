@@ -51,14 +51,16 @@ public class RacingCarsTest {
                 .hasMessage(ErrorMsg.CAR_NAME_LENGTH_MAX_ERROR.getMsg());
     }
 
-    @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"bmw,jeep,audi", "A,volvo", "benz"})
     void 자동차이름_성공(String userInput) {
-        // Given
+        /**
+         * Given: userInput과 같은 사용자 입력이 주어졌을 때
+         * When: RacingCars를 생성하면
+         * Then: Exception이 발생하지 않는다. (정상적으로 객체가 생성된다.)
+         */
 
-        // When
-
-        // Then
+        assertThatCode(() -> new RacingCars(userInput))
+                .doesNotThrowAnyException();
     }
 }
