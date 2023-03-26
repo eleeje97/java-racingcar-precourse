@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.constants.ErrorMsg;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarsTest {
@@ -65,7 +67,14 @@ public class RacingCarsTest {
     }
 
     @Test
-    void 우승자_선정_테스트() {
+    void 공동우승자_선정_테스트() {
+        // Given
+        RacingCars racingCars = new RacingCars("audi,bmw,benz");
 
+        // When
+        List<String> winners = racingCars.pickWinners();
+
+        // Then
+        assertThat(winners).containsExactly("audi", "bmw", "benz");
     }
 }
