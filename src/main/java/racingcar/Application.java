@@ -13,19 +13,11 @@ public class Application {
 
         uiManager.printGameStartMsg();
         while (racingCars == null) {
-            try {
-                racingCars = new RacingCars(uiManager.inputCarNames());
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+            racingCars = createRacingCars(uiManager.inputCarNames());
         }
 
         while (trialCount == null) {
-            try {
-                trialCount = new TrialCount(uiManager.inputTrialCount());
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+            trialCount = createTrialCount(uiManager.inputTrialCount());
         }
 
         uiManager.printGameResultMsg();
@@ -35,5 +27,23 @@ public class Application {
         }
 
         uiManager.printWinners(racingCars.pickWinners());
+    }
+
+    public static RacingCars createRacingCars(String userInput) {
+        try {
+            return new RacingCars(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public static TrialCount createTrialCount(String userInput) {
+        try {
+            return new TrialCount(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
