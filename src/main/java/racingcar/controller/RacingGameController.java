@@ -7,15 +7,13 @@ import racingcar.view.UIManager;
 
 public class RacingGameController {
     private UIManager uiManager;
-    private RacingCars racingCars;
-    private TrialCount trialCount;
 
     public void run() {
         uiManager = new UIManager();
 
         uiManager.printGameStartMsg();
-        racingCars = createRacingCars(uiManager.inputCarNames());
-        trialCount = createTrialCount(uiManager.inputTrialCount());
+        RacingCars racingCars = createRacingCars(uiManager.inputCarNames());
+        createTrialCount(uiManager.inputTrialCount());
 
         uiManager.printGameResultMsg();
         for (int i = 0; i < GameConstants.getTrialCount(); i++) {
@@ -35,12 +33,12 @@ public class RacingGameController {
         }
     }
 
-    public TrialCount createTrialCount(String userInput) {
+    public void createTrialCount(String userInput) {
         try {
-            return new TrialCount(userInput);
+            new TrialCount(userInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return createTrialCount(uiManager.inputTrialCount());
+            createTrialCount(uiManager.inputTrialCount());
         }
     }
 }
