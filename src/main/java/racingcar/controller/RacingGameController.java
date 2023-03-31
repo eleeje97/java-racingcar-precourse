@@ -6,9 +6,9 @@ import racingcar.domain.TrialCount;
 import racingcar.view.UIManager;
 
 public class RacingGameController {
-    UIManager uiManager;
-    RacingCars racingCars;
-    TrialCount trialCount;
+    private UIManager uiManager;
+    private RacingCars racingCars;
+    private TrialCount trialCount;
 
     public void run() {
         uiManager = new UIManager();
