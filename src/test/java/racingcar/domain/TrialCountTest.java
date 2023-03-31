@@ -69,7 +69,7 @@ public class TrialCountTest {
         TrialCount trialCount = new TrialCount(userInput);
 
         // Then
-        assertThat(GameConstants.getTrialCount()).isEqualTo(expected);
+        assertThat(trialCount.getCount()).isEqualTo(expected);
     }
 
 }

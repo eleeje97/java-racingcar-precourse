@@ -9,21 +9,11 @@ public enum GameConstants {
 
     private final int number;
 
-    private static int TRIAL_COUNT;
-
     GameConstants(int number) {
         this.number = number;
     }
 
     public int getNumber() {
         return number;
-    }
-
-    public static int getTrialCount() {
-        return TRIAL_COUNT;
-    }
-
-    public static void setTrialCount(int trialCount) {
-        TRIAL_COUNT = trialCount;
     }
 }

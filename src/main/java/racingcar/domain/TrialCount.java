@@ -1,17 +1,19 @@
 package racingcar.domain;
 
 import racingcar.constants.ErrorMsg;
-import racingcar.constants.GameConstants;
 
 public class TrialCount {
-    private int count;
+    private final int count;
 
     public TrialCount(String userInput) {
         validateEmptyInput(userInput);
         validateInputType(userInput);
         count = convertToInt(userInput);
         validateTrialCountZero(count);
-        GameConstants.setTrialCount(count);
+    }
+
+    public int getCount() {
+        return count;
     }
 
     private int convertToInt(String userInput) {
