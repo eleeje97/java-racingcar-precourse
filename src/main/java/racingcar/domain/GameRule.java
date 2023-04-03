@@ -1,11 +1,20 @@
 package racingcar.domain;
 
-import racingcar.constants.GameConstants;
-
 public class GameRule {
-    private final static int MOVE_BORDER_NUMBER = GameConstants.MOVE_BORDER_NUMBER.getNumber();
+    private final int MOVE_BORDER_NUMBER = 4;
+    private final RandomNumber randomNumber;
+    private final TrialCount trialCount;
 
-    public boolean canMove(RandomNumber randomNumber) {
+    public GameRule(TrialCount trialCount) {
+        this.trialCount = trialCount;
+        randomNumber = new GameRandomNumber();
+    }
+
+    public int getTrialCount() {
+        return trialCount.getCount();
+    }
+
+    public boolean canMove() {
         return randomNumber.getRandomNumber() >= MOVE_BORDER_NUMBER;
     }
 }

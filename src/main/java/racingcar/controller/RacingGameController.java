@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import racingcar.constants.GameConstants;
+import racingcar.domain.GameRule;
 import racingcar.domain.RacingCars;
 import racingcar.domain.TrialCount;
 import racingcar.view.UIManager;
@@ -13,11 +13,11 @@ public class RacingGameController {
 
         uiManager.printGameStartMsg();
         RacingCars racingCars = createRacingCars(uiManager.inputCarNames());
-        TrialCount trialCount = createTrialCount(uiManager.inputTrialCount());
+        GameRule gameRule = new GameRule(createTrialCount(uiManager.inputTrialCount()));
 
         uiManager.printGameResultMsg();
-        for (int i = 0; i < trialCount.getCount(); i++) {
-            racingCars.moveCars();
+        for (int i = 0; i < gameRule.getTrialCount(); i++) {
+            racingCars.moveCars(gameRule);
             uiManager.printCarPositions(racingCars.getCarPositions());
         }
 

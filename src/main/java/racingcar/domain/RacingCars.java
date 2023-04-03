@@ -30,10 +30,9 @@ public class RacingCars {
         return userInput.contains(" ");
     }
 
-    public void moveCars() {
+    public void moveCars(GameRule gameRule) {
         for (RacingCar car : racingCars) {
-            RandomNumber randomNumber = new GameRandomNumber();
-            car.attemptToMove(randomNumber);
+            car.attemptToMove(gameRule);
         }
     }
 

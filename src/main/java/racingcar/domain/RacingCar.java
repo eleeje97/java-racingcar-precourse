@@ -17,9 +17,8 @@ public class RacingCar {
         return carName.getName();
     }
 
-    public void attemptToMove(RandomNumber randomNumber) {
-        GameRule gameRule = new GameRule();
-        if (gameRule.canMove(randomNumber)) {
+    public void attemptToMove(GameRule gameRule) {
+        if (gameRule.canMove()) {
             move();
         }
     }
