@@ -1,9 +1,10 @@
 package racingcar.domain;
 
-import racingcar.constants.GameConstants;
 import racingcar.constants.ErrorMsg;
 
 public class CarName {
+    private static final int CAR_NAME_LENGTH_MIN = 1;
+    private static final int CAR_NAME_LENGTH_MAX = 5;
     private final String name;
 
     public CarName(String name) {
@@ -16,11 +17,11 @@ public class CarName {
     }
 
     private void validateLength(String name) {
-        if (name.length() < GameConstants.CAR_NAME_LENGTH_MIN.getNumber()) {
+        if (name.length() < CAR_NAME_LENGTH_MIN) {
             throw new IllegalArgumentException(ErrorMsg.CAR_NAME_LENGTH_MIN_ERROR.getMsg());
         }
 
-        if (name.length() > GameConstants.CAR_NAME_LENGTH_MAX.getNumber()) {
+        if (name.length() > CAR_NAME_LENGTH_MAX) {
             throw new IllegalArgumentException(ErrorMsg.CAR_NAME_LENGTH_MAX_ERROR.getMsg());
         }
     }

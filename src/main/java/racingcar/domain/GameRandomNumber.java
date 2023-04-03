@@ -1,10 +1,11 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.constants.GameConstants;
 
 public class GameRandomNumber implements RandomNumber {
-    private final int randomNumber;
+    private static final int RANDOM_NUMBER_RANGE_MIN = 1;
+    private static final int RANDOM_NUMBER_RANGE_MAX = 9;
+    private int randomNumber;
 
     public GameRandomNumber() {
         this.randomNumber = pickRandomNumber();
@@ -12,13 +13,10 @@ public class GameRandomNumber implements RandomNumber {
 
     @Override
     public int getRandomNumber() {
-        return randomNumber;
+        return pickRandomNumber();
     }
 
     private int pickRandomNumber() {
-        return Randoms.pickNumberInRange(
-                GameConstants.RANDOM_NUMBER_RANGE_MIN.getNumber(),
-                GameConstants.RANDOM_NUMBER_RANGE_MAX.getNumber()
-        );
+        return Randoms.pickNumberInRange(RANDOM_NUMBER_RANGE_MIN, RANDOM_NUMBER_RANGE_MAX);
     }
 }
