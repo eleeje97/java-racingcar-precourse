@@ -5,9 +5,9 @@ public class GameRule {
     private final RandomNumber randomNumber;
     private final TrialCount trialCount;
 
-    public GameRule(TrialCount trialCount) {
+    public GameRule(TrialCount trialCount, RandomNumber randomNumber) {
         this.trialCount = trialCount;
-        randomNumber = new GameRandomNumber();
+        this.randomNumber = randomNumber;
     }
 
     public int getTrialCount() {

@@ -8,6 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingCarTest {
     private RacingCar racingCar;
+    private GameRule gameRule;
+    private static final String TRIAL_COUNT_USER_INPUT = "3";
 
     @BeforeEach
     void setUp() {
@@ -18,10 +20,12 @@ public class RacingCarTest {
     @ValueSource(ints = {2, 3})
     void 전진시도_실패(int random) {
         // Given
+        TrialCount trialCount = new TrialCount(TRIAL_COUNT_USER_INPUT);
         RandomNumber randomNumber = new MockRandomNumber(random);
+        gameRule = new GameRule(trialCount, randomNumber);
 
         // When
-        racingCar.attemptToMove(randomNumber);
+        racingCar.attemptToMove(gameRule);
 
         // Then
         assertThat(racingCar.getMoveCount()).isEqualTo(0);
@@ -31,10 +35,13 @@ public class RacingCarTest {
     @ValueSource(ints = {4, 5})
     void 전진시도_성공(int random) {
         // Given
+        TrialCount trialCount = new TrialCount(TRIAL_COUNT_USER_INPUT);
         RandomNumber randomNumber = new MockRandomNumber(random);
+        gameRule = new GameRule(trialCount, randomNumber);
+
 
         // When
-        racingCar.attemptToMove(randomNumber);
+        racingCar.attemptToMove(gameRule);
 
         // Then
         assertThat(racingCar.getMoveCount()).isEqualTo(1);

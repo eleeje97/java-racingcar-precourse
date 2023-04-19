@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import racingcar.domain.GameRule;
-import racingcar.domain.RacingCars;
-import racingcar.domain.TrialCount;
+import racingcar.domain.*;
 import racingcar.view.UIManager;
 
 public class RacingGameController {
@@ -13,7 +11,10 @@ public class RacingGameController {
 
         uiManager.printGameStartMsg();
         RacingCars racingCars = createRacingCars(uiManager.inputCarNames());
-        GameRule gameRule = new GameRule(createTrialCount(uiManager.inputTrialCount()));
+
+        TrialCount trialCount = createTrialCount(uiManager.inputTrialCount());
+        RandomNumber randomNumber = new GameRandomNumber();
+        GameRule gameRule = new GameRule(trialCount, randomNumber);
 
         uiManager.printGameResultMsg();
         for (int i = 0; i < gameRule.getTrialCount(); i++) {
