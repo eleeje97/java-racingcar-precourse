@@ -1,0 +1,56 @@
+package racingcar.domain;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.constants.ErrorMsg;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+
+public class RacingCarsTest {
+
+    @ParameterizedTest
+    @ValueSource(strings = {" ", "bmw, jeep, audi", "bmw,jeep, ", " audi"})
+    void 자동차이름_공백_입력했을_때(String userInput) {
+        assertThatThrownBy(() -> new RacingCars(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.BLANK_IN_NAME_ERROR.getMsg());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", ",", "audi,", ",,", "bmw,,audi"})
+    void 자동차이름_길이범위최소_벗어났을_때(String userInput) {
+        assertThatThrownBy(() -> new RacingCars(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.CAR_NAME_LENGTH_MIN_ERROR.getMsg());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"ferrari", "bmw,ferrari", "ferrari,,"})
+    void 자동차이름_길이범위최대_벗어났을_때(String userInput) {
+        assertThatThrownBy(() -> new RacingCars(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMsg.CAR_NAME_LENGTH_MAX_ERROR.getMsg());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"bmw,jeep,audi", "A,volvo", "benz"})
+    void 자동차이름_성공(String userInput) {
+        assertThatCode(() -> new RacingCars(userInput))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 공동우승자_선정_테스트() {
+        // Given
+        RacingCars racingCars = new RacingCars("audi,bmw,benz");
+
+        // When
+        List<String> winners = racingCars.pickWinners();
+
+        // Then
+        assertThat(winners).containsExactly("audi", "bmw", "benz");
+    }
+}
